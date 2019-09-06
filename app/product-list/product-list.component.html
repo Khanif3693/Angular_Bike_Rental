@@ -1,0 +1,28 @@
+<div *ngIf="items.length <= 0; else elseBlock">
+  <div *ngFor="let product of products; index as productId">
+    <div *ngIf="product.product_type != 'accessory'">
+      <h3>
+        <a
+          [title]="product.name + ' details'"
+          [routerLink]="['/products', productId]"
+        >
+          {{ product.name }}
+          {{ product.product_type }}
+        </a>
+      </h3>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div *ngFor="let product of products; index as productId">
+    <h3>
+      <a
+        [title]="product.name + ' details'"
+        [routerLink]="['/products', productId]"
+      >
+        {{ product.name }}
+        {{ product.product_type }}
+      </a>
+    </h3>
+  </div>
+</ng-template>
